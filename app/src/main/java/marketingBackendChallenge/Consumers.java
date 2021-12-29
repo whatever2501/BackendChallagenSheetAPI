@@ -30,34 +30,29 @@ import org.jfree.data.general.DefaultPieDataset;
  *
  * @author L
  */
-public class Costumers {
+public class Consumers {
    
    
-    private List<List<Object>> values;
-    private int costumersWithChildren = 0 ;
-    private int costumersWithTeens= 0 ;
-    private List<Costumers> allCostumers = new ArrayList<>();
-    private List<Costumers> costumers57 = new ArrayList<>();
-    private int yearBorn;
-    private String education;
-    private int costumersWithoutChildren;
-    private int costumersWithoutTeens;
-    private String martialStatus;
+   
+    private int consumersWithChildren = 0 ;
+    private int consumersWithTeens= 0 ;
+    private List<Consumers> allConsumers = new ArrayList<>();
+    private List<Consumers> consumers57 = new ArrayList<>();
+    private int consumersWithoutChildren;
+    private int consumersWithoutTeens;
     private int children;
     private int teens;
-    private int othersCostumers;
+    private int othersConsumers;
     private int size ;
     
     
-    Costumers(List<List<Object>> values ){
-       this.values = values;
-       Costumers57(values);
+    Consumers(List<List<Object>> values ){
+     
+       Consumers57(values);
         
     }
-    Costumers(int yearBorn,String education,String martialStatus,int children,int teens){
-        this.yearBorn = yearBorn;
-        this.education = education;
-        this.martialStatus = martialStatus;
+    Consumers(int children,int teens){
+    
         this.children = children;
         this.teens = teens;
                 
@@ -65,7 +60,7 @@ public class Costumers {
             
     
   
-    public void Costumers57(List<List<Object>> costumers) {
+    public void Consumers57(List<List<Object>> costumers) {
          size = costumers.size();
         float totalOfConstumers57 = 0;
          for(int row = 1; row < size; row++){
@@ -80,93 +75,64 @@ public class Costumers {
            int teens = Integer.parseInt(costumer.get(6).toString());
            
           
-           allCostumers.add(new Costumers(yearBirth,education,martialStatus,children,teens));
+           allConsumers.add(new Consumers(children,teens));
            if(yearBirth >= 1957 && yearBirth <= 1967 && education.equals("Master") && martialStatus.equals("Married")){
-               costumers57.add(new Costumers(yearBirth,education,martialStatus,children,teens));
+               consumers57.add(new Consumers(children,teens));
                totalOfConstumers57++; 
            }  
       }
          
-         for(Costumers c : allCostumers){
+         for(Consumers c : allConsumers){
             
              if(c.getChildren() > 0){
-                 
-                 costumersWithChildren++;
+                 consumersWithChildren++;
              }if(c.getTeens() > 0){
-                 costumersWithTeens++;
+                 consumersWithTeens++;
              }if(c.getChildren() == 0){
-                 
-                 costumersWithoutChildren++;
-             }if(c.getTeens() == 0){
-                 
-                 
-                 costumersWithoutTeens++;
+                 consumersWithoutChildren++;
+             }if(c.getTeens() == 0){ 
+                 consumersWithoutTeens++;
              }
          }
-         othersCostumers = size - costumers57.size();
+         othersConsumers = size - consumers57.size();
      
     }
-    public ChartFrame getCostumers57to67(){
+    public ChartFrame getConsumers57to67(){
             
 		DefaultPieDataset dataset = new DefaultPieDataset();
-		dataset.setValue("Costumers with different age", othersCostumers);
-		dataset.setValue("Costumers born between 1958 to 1968", costumers57.size());
+		dataset.setValue("Consumers with different age", othersConsumers);
+		dataset.setValue("Consumers born between 1958 to 1968", consumers57.size());
 	
 		// Creation Of Chart.
-		JFreeChart chart = ChartFactory.createPieChart("Costumers Age", dataset, true, // legend?
+		JFreeChart chart = ChartFactory.createPieChart("Consumers Age", dataset, true, // legend?
 				true, // tooltips?
 				false // URLs?
 		);
                 
-		chart.setTitle("Costumers Age");
+		chart.setTitle("Consumers Age");
                 
-		ChartFrame frame = new ChartFrame("Costumers Age", chart);
+		ChartFrame frame = new ChartFrame("Consumers Age", chart);
                 frame.setSize(500, 500);
 		
 		return frame;
 
         
     }
-
-    public void HowManyHaveChilden(){
-        
-               
-        System.out.println("aa");
-        /**DefaultPieDataset dataset = new DefaultPieDataset();
-		dataset.setValue("Costumers  with Children", costumersWithChildren);
-		dataset.setValue("Costumers without children", (costumers57.size()-costumersWithChildren));
-                
-		// Creation Of Chart.
-		JFreeChart chart = ChartFactory.createPieChart("Costumersborn between 1958 to 1968 with Kids at home", dataset, true, // legend?
-				true, // tooltips?
-				false // URLs?
-		);
-                
-		
-                chart.setTitle("Costumersborn between 1958 to 1968 Kids at home");
-                
-		ChartFrame frame = new ChartFrame("Costumers Kids", chart);
-                
-                frame.setSize(500, 500);
-		
-		return frame;**/
-        
-    }
     
         public ChartFrame HowManyHaveTeens(){
         DefaultPieDataset dataset = new DefaultPieDataset();
-		dataset.setValue("Costumers with Teenagers", costumersWithTeens);
-		dataset.setValue("Costumers without Teenagers", (costumers57.size()-costumersWithTeens));
+		dataset.setValue("Consumers with Teenagers", consumersWithTeens);
+		dataset.setValue("Consumers without Teenagers", (consumers57.size()-consumersWithTeens));
 	
 		// Creation Of Chart.
-		JFreeChart chart = ChartFactory.createPieChart("Costumers born between 1958 to 1968 Teens at home", dataset, true, // legend?
+		JFreeChart chart = ChartFactory.createPieChart("Consumers born between 1958 to 1968 Teens at home", dataset, true, // legend?
 				true, // tooltips?
 				false // URLs?
 		);
                 
-		chart.setTitle("Costumers born between 1958 to 1968 Teens at home");
+		chart.setTitle("Consumers born between 1958 to 1968 Teens at home");
                 
-		ChartFrame frame = new ChartFrame("Costumers Teens", chart);
+		ChartFrame frame = new ChartFrame("Consumers Teens", chart);
                 frame.setSize(500, 500);
 		
 		return frame;
@@ -183,29 +149,29 @@ public class Costumers {
     }
 
     public int getOthersCostumers() {
-        return othersCostumers;
+        return othersConsumers;
     }
 
  
 
     public int getCostumersWithChildren() {
-        return costumersWithChildren;
+        return consumersWithChildren;
     }
 
     public int getCostumersWithTeens() {
-        return costumersWithTeens;
+        return consumersWithTeens;
     }
 
-    public List<Costumers> getCostumers57() {
-        return costumers57;
+    public List<Consumers> getCostumers57() {
+        return consumers57;
     }
 
     public int getCostumersWithoutChildren() {
-        return costumersWithoutChildren;
+        return consumersWithoutChildren;
     }
 
     public int getCostumersWithoutTeens() {
-        return costumersWithoutTeens;
+        return consumersWithoutTeens;
     }
 
 

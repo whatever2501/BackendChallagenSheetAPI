@@ -12,16 +12,16 @@ import javax.swing.JFrame;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.util.List;
-import marketingBackendChallenge.Costumers;
+import marketingBackendChallenge.Consumers;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.ui.RectangleInsets;
 import org.jfree.data.general.DefaultPieDataset;
 
 public class ChartKids extends JFrame {
 
-    private Costumers consumer;
+    private Consumers consumer;
     
-    public ChartKids(Costumers consumer) {
+    public ChartKids(Consumers consumer) {
         this.consumer = consumer;
         initUI();
     }
@@ -40,7 +40,7 @@ public class ChartKids extends JFrame {
         add(chartPanel);
 
         pack();
-        setTitle("Costumers with children at home");
+        setTitle("Consumers with children at home");
         setLocationRelativeTo(null);
         setSize(500, 500);
         
@@ -51,8 +51,8 @@ public class ChartKids extends JFrame {
     private CategoryDataset createDataset() {
 
     	DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-                dataset.setValue(consumer.getCostumersWithChildren(), "Costumers", "With kids");
-                dataset.setValue(consumer.getCostumersWithoutChildren(), "Costumers", "Without kids");
+                dataset.setValue(consumer.getCostumersWithChildren(), "Consumers", "With kids");
+                dataset.setValue(consumer.getCostumersWithoutChildren(), "Consumers", "Without kids");
                 
 
         return dataset;
@@ -61,9 +61,9 @@ public class ChartKids extends JFrame {
     private JFreeChart createChart(CategoryDataset dataset) {
         
         JFreeChart barChart = ChartFactory.createBarChart(
-                "Costumers with children at home",
+                "Consumers with children at home",
                 "",
-                "Costumers",
+                "Consumers",
                 dataset,
                 PlotOrientation.VERTICAL,
                 true, true, false);
