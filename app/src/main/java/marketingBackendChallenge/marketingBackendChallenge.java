@@ -91,10 +91,10 @@ public class marketingBackendChallenge {
                 .execute();
         List<List<Object>> values = response.getValues();
         
-        Costumers costumers = new Costumers(values);
+        Consumers costumers = new Consumers(values);
         
         
-        ChartFrame view57 = costumers.getCostumers57to67();
+        ChartFrame view57 = costumers.getConsumers57to67();
         view57.setLocation(0, 0);
         view57.setVisible(true);
         
