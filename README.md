@@ -20,4 +20,4 @@
   Run the marketingBackendChallenge.
   
  Print the images that prove your solutions:
-  ![image](https://user-images.githubusercontent.com/33701074/147621778-07c0ebf4-9931-4ef0-a88e-ffbba3e95942.png)
+ ![image](https://user-images.githubusercontent.com/33701074/147622491-147a7e7f-4b6f-4c51-9764-dc95d8f3e19a.png)
